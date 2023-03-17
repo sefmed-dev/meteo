@@ -1,4 +1,4 @@
-export const environment= {
+export const environment = {
   firebase: {
     projectId: 'meteo-6ae41',
     appId: '1:189137861149:web:a434fb46a66d5bd6d5e4f4',
