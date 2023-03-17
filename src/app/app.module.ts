@@ -12,9 +12,10 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
-import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireModule, FirebaseApp } from '@angular/fire/compat';
 
 import { AuthService } from './shared/auth.service';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -27,13 +28,13 @@ import { AuthService } from './shared/auth.service';
     BrowserModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    //AngularFireModule.initializeApp(environment),
-    //provideAuth(() => getAuth()),
-    //provideDatabase(() => getDatabase()),
-    //provideFirestore(() => getFirestore()),
+    //AngularFireModule.initializeApp(environment), // -- old version
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
     FormsModule
   ],
-  providers: [ AuthService ],
+  providers: [ { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
