@@ -2,13 +2,31 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { GoogleAuthProvider } from 'firebase/auth';
+import * as auth from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  userData: any;
 
-  constructor(private fireauth : AngularFireAuth, private router : Router) { }
+  constructor(private fireauth : AngularFireAuth, private router : Router) {   this.fireauth.authState.subscribe((user) => {
+    if (user) {
+      this.userData = user;
+      localStorage.setItem('token', JSON.stringify(this.userData));
+      JSON.parse(localStorage.getItem('token')!);
+    } else {
+      localStorage.setItem('token', 'null');
+      JSON.parse(localStorage.getItem('token')!);
+    }
+  });
+}
+// Returns true when user is looged in and email is verified
+get isLoggedIn(): boolean {
+  const user = JSON.parse(localStorage.getItem('token')!);
+  return user !== null ? true : false;
+} 
+  
   //login method
    login(email : string, password : string) {
     this.fireauth.signInWithEmailAndPassword(email,password).then( res => {
@@ -44,6 +62,7 @@ export class AuthService {
     this.fireauth.signOut().then( () => {
       localStorage.removeItem('token');
       this.router.navigate(['/login']);
+      alert('logged out');
     }, err => {
       alert(err.message);
     })
