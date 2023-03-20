@@ -40,7 +40,7 @@ get isLoggedIn(): boolean {
 
     }, err => {
         alert(err.message);
-        this.router.navigate(['/login']);
+        this.router.navigate(['']);
     })
   }
 
@@ -49,7 +49,7 @@ get isLoggedIn(): boolean {
     this.fireauth.createUserWithEmailAndPassword(email, password).then( res => {
       alert('Registration Successful');
       this.sendEmailForVarification(res.user);
-      this.router.navigate(['/login']);
+      this.router.navigate(['']);
     }, err => {
       alert(err.message);
       this.router.navigate(['/register']);
@@ -61,7 +61,7 @@ get isLoggedIn(): boolean {
   logout() {
     this.fireauth.signOut().then( () => {
       localStorage.removeItem('token');
-      this.router.navigate(['/login']);
+      this.router.navigate(['']);
       alert('logged out');
     }, err => {
       alert(err.message);

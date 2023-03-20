@@ -7,8 +7,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'file-upload', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent, canActivate: [AngularFireAuth]},
+  {path: '', pathMatch: 'full', component: LoginComponent, canActivate: [AngularFireAuth]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterComponent},
   /*{path: '', redirectTo:'file-upload', pathMatch:'full'},

@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
       //window.alert(this.auth.isLoggedIn); 
       if (this.auth.isLoggedIn !== true) {
         window.alert('Access Denied, Login is Required to Access This Page!');
-        this.router.navigate(['login']);
+        this.router.navigate(['']);
         return false;
       }
     return  true;
