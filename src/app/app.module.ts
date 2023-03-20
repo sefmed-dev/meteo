@@ -17,13 +17,15 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { AuthService } from './shared/auth.service';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule
   ],
+  
   providers: [ { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]
 })
