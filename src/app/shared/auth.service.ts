@@ -3,12 +3,30 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { GoogleAuthProvider } from 'firebase/auth';
 import * as auth from 'firebase/auth';
+import { Firestore,collection } from "@angular/fire/firestore";
+import { addDoc, getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { environment } from 'src/environments/environment';
+import { doc, setDoc } from "firebase/firestore"; 
+import { getAuth } from "firebase/auth";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userData: any;
+
+  firebaseApp = initializeApp({
+    projectId: 'meteo-6ae41',
+     appId: '1:189137861149:web:a434fb46a66d5bd6d5e4f4',
+     storageBucket: 'meteo-6ae41.appspot.com',
+     apiKey: 'AIzaSyAQqd4HZl5PqBxH0_sWyTi_FnfeghfU5fk',
+     authDomain: 'meteo-6ae41.firebaseapp.com',
+     messagingSenderId: '189137861149',
+     measurementId: 'G-6VN26MDQ2R',
+ });
+ db = getFirestore();
 
   constructor(private fireauth : AngularFireAuth, private router : Router) {   this.fireauth.authState.subscribe((user) => {
     if (user) {
@@ -45,15 +63,40 @@ get isLoggedIn(): boolean {
   }
 
   // register method
-  register(email : string, password : string) {
-    this.fireauth.createUserWithEmailAndPassword(email, password).then( res => {
+  async register(email : string, password : string, Name : string) {
+    this.fireauth.createUserWithEmailAndPassword(email, password).then( async res => {
       alert('Registration Successful');
       this.sendEmailForVarification(res.user);
-      this.router.navigate(['']);
+      res.user?.updateProfile(
+        {
+          displayName : Name,
+        }
+      )
+      console.log("USER's UID: ",res.user?.uid);
+
+      // Add a new document in collection "Essai1"
+
+
+      const docRef = collection(this.db, "Essai1");
+
+      await setDoc(doc(docRef, res.user?.uid), {
+        Email : email,
+        Name : Name,
+      });
+      this.router.navigate(['/login']);
     }, err => {
       alert(err.message);
       this.router.navigate(['/register']);
     })
+    
+    /*setDoc(doc(this.db, "Essai1","24JHFHN8pKD5Ri5hBbR2"), {
+      Email : email,
+      Name : Name,
+});*/
+
+
+
+
   }
 
 
@@ -98,5 +141,6 @@ googleSignIn() {
     alert(err.message);
   })
 }
+
 
 }
