@@ -2,7 +2,28 @@
     <a class="navbar-brand" href="/"> <img src="../../../assets/METEO.png" width="60" height="60" alt=""> </a>
     <a type="button" class="btn btn-sm btn-outline-secondary" (click)="logout()">Logout</a>
   </nav>
+  <section class="vh-100" style="background: url(https://img.freepik.com/free-photo/cloudy-stormy-black-white-dramatic-sky_146671-19382.jpg?w=1060&t=st=1679305526~exp=1679306126~hmac=402e6fa079818f1ccd944bbebc159d63f49fe83098d32b46876a667946f2149c);background-size: cover;">
+    <div class="container">
+      <div class="row height d-flex justify-content-center align-items-center">
   
+        <div class="col-md-6">
+          <h2 class="text-white">Search for weather where ever you want !</h2>
+  
+          <div class="form">
+            <i class="fa fa-search"></i>
+            <form (ngSubmit)="onSubmit()">
+              <input type="text" class="form-control form-input" placeholder="Search anything..." [(ngModel)]="cityName" name="the city name">
+              <span class="left-pan"><button><i class="bi bi-search"></i></button></span>
+            </form>
+          </div>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+  <section>
 <section class="vh-100" style="background: url(https://img.freepik.com/free-photo/cloudy-stormy-black-white-dramatic-sky_146671-19382.jpg?w=1060&t=st=1679305526~exp=1679306126~hmac=402e6fa079818f1ccd944bbebc159d63f49fe83098d32b46876a667946f2149c);background-size: cover;">
     <div class="container py-5 h-100">
   
@@ -13,26 +34,26 @@
             <div class="card-body p-4">
   
               <div class="d-flex">
-                <h6 class="flex-grow-1">Warsaw</h6>
-                <h6>15:07</h6>
+                <h6 class="flex-grow-1">{{city}}</h6>
+                <h6>{{time}}</h6>
               </div>
   
               <div class="d-flex flex-column text-center mt-5 mb-4">
-                <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> 13°C </h6>
-                <span class="small" style="color: #868B94">Stormy</span>
+                <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{temp}}°C </h6>
+                <span class="small" style="color: #868B94">{{state}}</span>
               </div>
   
               <div class="d-flex align-items-center">
                 <div class="flex-grow-1" style="font-size: 1rem;">
-                  <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> 40 km/h
+                  <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> wind speed : {{wind}} Km/h
                     </span></div>
-                  <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> 84% </span>
+                  <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> Humidity :  {{hum}}%</span>
                   </div>
-                  <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1"> 0.2h </span>
+                  <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1"> Pression : {{press}} hPa </span>
                   </div>
                 </div>
                 <div>
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp"
+                  <img src="{{icone}}"
                     width="100px">
                 </div>
               </div>

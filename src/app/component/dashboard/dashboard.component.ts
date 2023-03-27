@@ -10,15 +10,49 @@ import { ApiService } from 'src/app/api.service';
   providers: [ApiService]
 })
 export class DashboardComponent {
+  city: any;
+  icone: any;
+  time: any;
+  temp: any;
+  state: any;
+  wind: any;
+  hum: any;
+  press: a
+  cityName!: string;
   constructor(private auth : AuthService,private apiService: ApiService) { }
 
   Userauth = getAuth();
   user = this.Userauth.currentUser;
-
   ngOnInit() {
-    this.apiService.getWeatherData('New York').subscribe((data: any) => {
+    this.apiService.getWeatherData('Paris').subscribe((data: any) => {
       console.log(data);
+      this.city = data.location.name;
+      this.icone = data.current.condition.icon;
+      this.time = data.current.last_updated
+      this.temp = data.current.temp_c
+      this.state = data.current.condition.text
+      this.wind = data.current.wind_kph
+      this.hum = data.current.humidity
+      this.press = data.current.pressure_mb
     });}
+
+    updateWidget(cityName : string) {
+      this.apiService.getWeatherData(cityName).subscribe((data: any) => {
+        console.log(data);
+        this.city = data.location.name;
+        this.icone = data.current.condition.icon;
+        this.time = data.current.last_updated
+        this.temp = data.current.temp_c
+        this.state = data.current.condition.text
+        this.wind = data.current.wind_kph
+        this.hum = data.current.humidity
+        this.press = data.current.pressure_mb
+      });}
+
+    onSubmit(): void {
+      console.log(this.cityName);
+      this.updateWidget(this.cityName)
+    }
 
   logout(){
     this.auth.logout();
