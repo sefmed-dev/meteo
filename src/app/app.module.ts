@@ -19,6 +19,10 @@ import { AuthService } from './shared/auth.service';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 
+import { HttpClientModule } from '@angular/common/http'; // import HttpClientModule
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +34,7 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     //AngularFireModule.initializeApp(environment), // -- old version
     provideAuth(() => getAuth()),
