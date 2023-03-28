@@ -57,7 +57,7 @@ export class DashboardComponent {
     }
 
     AjoutFavorie(){
-      console.log(this.city +": oefjmoegloehglkehgkl ------------------------------- efhekghkehgkehgkehg : "+this.ID)
+      console.log(this.city +":----------: "+this.ID)
       this.auth.AjoutFavorie(this.city,this.ID);
     }
 

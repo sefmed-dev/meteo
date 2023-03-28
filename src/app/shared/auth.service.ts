@@ -77,11 +77,12 @@ get isLoggedIn(): boolean {
       // Add a new document in collection "Essai1"
 
 
-      const docRef = collection(this.db, "Essai1");
+      const docRef = collection(this.db, "Essai3");
 
       await setDoc(doc(docRef, res.user?.uid), {
         Email : email,
         Name : Name,
+        cities:[]
       });
       this.router.navigate(['/login']);
     }, err => {
@@ -153,8 +154,9 @@ async AjoutFavorie(CityName:string,userID:string | undefined)
     regions: arrayUnion("greater_virginia")
   });*/
 
-  const docRef = collection(this.db, "Favorits"); // create reference to document
+  const docRef = collection(this.db, "Essai3"); // create reference to document
 
+ 
 await updateDoc(doc(docRef, userID), {
   cities: arrayUnion(CityName)
 });
