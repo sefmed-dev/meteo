@@ -3,13 +3,13 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { GoogleAuthProvider } from 'firebase/auth';
 import * as auth from 'firebase/auth';
-import { Firestore,collection } from "@angular/fire/firestore";
+import { Firestore} from "@angular/fire/firestore";
 import { addDoc, getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { environment } from 'src/environments/environment';
-import { doc, setDoc } from "firebase/firestore"; 
 import { getAuth } from "firebase/auth";
-
+ 
+import { collection, doc, setDoc, updateDoc, arrayUnion } from "firebase/firestore"; 
 
 @Injectable({
   providedIn: 'root'
@@ -142,5 +142,23 @@ googleSignIn() {
   })
 }
 
+async AjoutFavorie(CityName:string,userID:string | undefined)
+{
+  /*
+  await updateDoc(doc(collection(this.db, "newFavorits["+userID+"].cities")), {
+    cities: arrayUnion(CityName)
+  });*/
+  /*const docRef = collection(this.db, "essai2");
+  await updateDoc(doc(docRef,userID), {
+    regions: arrayUnion("greater_virginia")
+  });*/
+
+  const docRef = collection(this.db, "Favorits"); // create reference to document
+
+await updateDoc(doc(docRef, userID), {
+  cities: arrayUnion(CityName)
+});
+}
 
 }
+

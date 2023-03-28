@@ -17,12 +17,14 @@ export class DashboardComponent {
   state: any;
   wind: any;
   hum: any;
-  press: a
+  press: any;
   cityName!: string;
   constructor(private auth : AuthService,private apiService: ApiService) { }
 
   Userauth = getAuth();
   user = this.Userauth.currentUser;
+  ID=this.user?.uid;
+
   ngOnInit() {
     this.apiService.getWeatherData('Paris').subscribe((data: any) => {
       console.log(data);
@@ -52,6 +54,11 @@ export class DashboardComponent {
     onSubmit(): void {
       console.log(this.cityName);
       this.updateWidget(this.cityName)
+    }
+
+    AjoutFavorie(){
+      console.log(this.city +": oefjmoegloehglkehgkl ------------------------------- efhekghkehgkehgkehg : "+this.ID)
+      this.auth.AjoutFavorie(this.city,this.ID);
     }
 
   logout(){
