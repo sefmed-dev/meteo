@@ -1,14 +1,14 @@
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="/"> <img src="../../../assets/METEO.png" width="60" height="60" alt=""> </a>
-    <a type="button" class="btn btn-sm btn-outline-secondary" (click)="logout()">Logout</a>
-  </nav>
-  <section class="vh-100" style="background: url(https://img.freepik.com/free-photo/cloudy-stormy-black-white-dramatic-sky_146671-19382.jpg?w=1060&t=st=1679305526~exp=1679306126~hmac=402e6fa079818f1ccd944bbebc159d63f49fe83098d32b46876a667946f2149c);background-size: cover;">
-    <div class="container">
-      <div class="row height d-flex justify-content-center align-items-center">
-  
-        <div class="col-md-6">
+  <a class="navbar-brand" href="/"> <img src="../../../assets/METEO.png" width="60" height="60" alt=""> </a>
+  <a type="button" class="btn btn-sm btn-outline-secondary" (click)="logout()">Logout</a>
+</nav>
+<section class="vh-100" style="background: url(https://img.freepik.com/free-photo/cloudy-stormy-black-white-dramatic-sky_146671-19382.jpg?w=1060&t=st=1679305526~exp=1679306126~hmac=402e6fa079818f1ccd944bbebc159d63f49fe83098d32b46876a667946f2149c);background-size: cover;">
+  <div class="container">
+    <div class="row height d-flex justify-content-center align-items-center">
+      <div class="d-flex">
+        <div class="d-inline-block">
           <h2 class="text-white">Search for weather where ever you want !</h2>
-  
+
           <div class="form">
             <i class="fa fa-search"></i>
             <form (ngSubmit)="onSubmit()">
@@ -16,55 +16,162 @@
               <span class="left-pan"><button><i class="bi bi-search"></i></button></span>
             </form>
           </div>
-          
+        </div>
+        <div class="container d-inline-block">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-6 col-lg-6 col-xl-6">
+      
+              <div class="card" style="color: #4B515D; border-radius: 35px;">
+                <div class="card-body p-4">
+      
+                  <div class="d-flex">
+                    <h6 class="flex-grow-1">{{city}}</h6>
+                    <h6>{{time}}</h6>
+                  </div>
+      
+                  <div class="d-flex flex-column text-center mt-5 mb-4">
+                    <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{temp}}°C </h6>
+                    <span class="small" style="color: #868B94">{{state}}</span>
+                  </div>
+      
+                  <div class="d-flex align-items-center">
+                    <div class="flex-grow-1" style="font-size: 1rem;">
+                      <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> wind speed : {{wind}} Km/h
+                        </span></div>
+                      <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> Humidity :  {{hum}}%</span>
+                      </div>
+                      <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1"> Pression : {{press}} hPa </span>
+                      </div>
+                    </div>
+                    <div>
+                      <img src="{{icone}}"
+                        width="100px">
+                    </div>
+                  </div>
+      
+                  <button type="button" class="btn btn-primary" (click)="AjoutFavorie()">Ajout au Favories <span class="bi bi-heart"></span></button>
+    
+                </div>
+              </div>
+      
+            </div>
+          </div>
+      
         </div>
         
       </div>
       
+      
     </div>
-  </section>
-  <section>
-<section class="vh-100" style="background: url(https://img.freepik.com/free-photo/cloudy-stormy-black-white-dramatic-sky_146671-19382.jpg?w=1060&t=st=1679305526~exp=1679306126~hmac=402e6fa079818f1ccd944bbebc159d63f49fe83098d32b46876a667946f2149c);background-size: cover;">
-    <div class="container py-5 h-100">
-  
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-8 col-lg-6 col-xl-4">
-  
-          <div class="card" style="color: #4B515D; border-radius: 35px;">
-            <div class="card-body p-4">
-  
-              <div class="d-flex">
-                <h6 class="flex-grow-1">{{city}}</h6>
-                <h6>{{time}}</h6>
-              </div>
-  
-              <div class="d-flex flex-column text-center mt-5 mb-4">
-                <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{temp}}°C </h6>
-                <span class="small" style="color: #868B94">{{state}}</span>
-              </div>
-  
-              <div class="d-flex align-items-center">
-                <div class="flex-grow-1" style="font-size: 1rem;">
-                  <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> wind speed : {{wind}} Km/h
-                    </span></div>
-                  <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> Humidity :  {{hum}}%</span>
-                  </div>
-                  <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1"> Pression : {{press}} hPa </span>
-                  </div>
-                </div>
-                <div>
-                  <img src="{{icone}}"
-                    width="100px">
-                </div>
-              </div>
-  
-              <button type="button" class="btn btn-primary" (click)="AjoutFavorie()">Ajout au Favories <span class="bi bi-heart"></span></button>
+    
+  </div>
+</section>
+<section class="vh-100 " style="background: url(https://img.freepik.com/free-photo/cloudy-stormy-black-white-dramatic-sky_146671-19382.jpg?w=1060&t=st=1679305526~exp=1679306126~hmac=402e6fa079818f1ccd944bbebc159d63f49fe83098d32b46876a667946f2149c);background-size: cover;">
+  <div class=" container row  align-items-center justify-content-center">
+    <div class="col-md-4 col-lg-4 col-xl-4 my-auto">
+      
+      <div class="card" style="color: #4B515D; border-radius: 35px;">
+        <div class="card-body p-4">
 
+          <div class="d-flex">
+            <h6 class="flex-grow-1">{{city1}}</h6>
+            <h6>{{time1}}</h6>
+          </div>
+
+          <div class="d-flex flex-column text-center mt-5 mb-4">
+            <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{temp1}}°C </h6>
+            <span class="small" style="color: #868B94">{{state1}}</span>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <div class="flex-grow-1" style="font-size: 1rem;">
+              <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> wind speed : {{wind1}} Km/h
+                </span></div>
+              <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> Humidity :  {{hum1}}%</span>
+              </div>
+              <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1"> Pression : {{press1}} hPa </span>
+              </div>
+            </div>
+            <div>
+              <img src="{{icone1}}"
+                width="100px">
             </div>
           </div>
-  
+
+          <button type="button" class="btn btn-primary" (click)="AjoutFavorie()">Ajout au Favories <span class="bi bi-heart"></span></button>
+
         </div>
       </div>
-  
-    </div>
-  </section>
+    </div> 
+    <div class="col-md-4 col-lg-4 col-xl-4 my-auto">
+      
+      <div class="card" style="color: #4B515D; border-radius: 35px;">
+        <div class="card-body p-4">
+
+          <div class="d-flex">
+            <h6 class="flex-grow-1">{{city2}}</h6>
+            <h6>{{time2}}</h6>
+          </div>
+
+          <div class="d-flex flex-column text-center mt-5 mb-4">
+            <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{temp2}}°C </h6>
+            <span class="small" style="color: #868B94">{{state2}}</span>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <div class="flex-grow-1" style="font-size: 1rem;">
+              <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> wind speed : {{wind2}} Km/h
+                </span></div>
+              <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> Humidity :  {{hum2}}%</span>
+              </div>
+              <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1"> Pression : {{press2}} hPa </span>
+              </div>
+            </div>
+            <div>
+              <img src="{{icone2}}"
+                width="100px">
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary" (click)="AjoutFavorie()">Ajout au Favories <span class="bi bi-heart"></span></button>
+
+        </div>
+      </div>
+    </div> 
+    <div class="col-md-4 col-lg-4 col-xl-4 my-auto">
+      
+      <div class="card" style="color: #4B515D; border-radius: 35px;">
+        <div class="card-body p-4">
+
+          <div class="d-flex">
+            <h6 class="flex-grow-1">{{city3}}</h6>
+            <h6>{{time3}}</h6>
+          </div>
+
+          <div class="d-flex flex-column text-center mt-5 mb-4">
+            <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{temp3}}°C </h6>
+            <span class="small" style="color: #868B94">{{state3}}</span>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <div class="flex-grow-1" style="font-size: 1rem;">
+              <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> wind speed : {{wind3}} Km/h
+                </span></div>
+              <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> Humidity :  {{hum3}}%</span>
+              </div>
+              <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1"> Pression : {{press3}} hPa </span>
+              </div>
+            </div>
+            <div>
+              <img src="{{icone3}}"
+                width="100px">
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary" (click)="AjoutFavorie()">Ajout au Favories <span class="bi bi-heart"></span></button>
+
+        </div>
+      </div>
+    </div> 
+  </div>
+  </section>

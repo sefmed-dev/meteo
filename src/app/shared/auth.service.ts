@@ -4,19 +4,20 @@ import { Router } from '@angular/router';
 import { GoogleAuthProvider } from 'firebase/auth';
 import * as auth from 'firebase/auth';
 import { Firestore} from "@angular/fire/firestore";
-import { addDoc, getFirestore } from "firebase/firestore";
+import { DocumentSnapshot, addDoc, getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { environment } from 'src/environments/environment';
 import { getAuth } from "firebase/auth";
- 
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { collection, doc, setDoc, updateDoc, arrayUnion } from "firebase/firestore"; 
-
+import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userData: any;
-
+  variableTest: any;
   firebaseApp = initializeApp({
     projectId: 'meteo-6ae41',
      appId: '1:189137861149:web:a434fb46a66d5bd6d5e4f4',
@@ -28,7 +29,7 @@ export class AuthService {
  });
  db = getFirestore();
 
-  constructor(private fireauth : AngularFireAuth, private router : Router) {   this.fireauth.authState.subscribe((user) => {
+  constructor(private fireauth : AngularFireAuth, private router : Router, private db1:AngularFirestore) {   this.fireauth.authState.subscribe((user) => {
     if (user) {
       this.userData = user;
       localStorage.setItem('token', JSON.stringify(this.userData));
@@ -162,5 +163,27 @@ await updateDoc(doc(docRef, userID), {
 });
 }
 
+/*
+async AfficheFavorits()
+{
+//console.log(this.userData);
+
+//alert(this.userData.uid)
+//alert("hello1")
+
+this.db1.collection("Essai3").doc(this.userData.uid).snapshotChanges().subscribe((a:any)=>{
+  const test:{cities:string[]} = a.payload.data()
+  alert(test.cities)
+  return test.cities;
+})
+}
+/*
+getFavorites(uid: string): Observable<string[]> {
+  return this.db1.collection("Essai3").doc<{ cities: string[] }>(uid).valueChanges().pipe(
+    filter(data => !!data), // Filter out undefined values
+    map((data: DocumentSnapshot<{ cities: string[] }>) => data.data().cities)
+  );
+}
+*/
 }
 
