@@ -25,20 +25,14 @@
 
         position: absolute;
     right: 17px;
-    top: 13px;
-    padding: 2px;
-    border-left: 1px solid #d1d5db;
-
-}
-
-.left-pan{
-    padding-left: 7px;
-}
-
-.left-pan i{
+    top: 10px;
    
-   padding-left: 10px;
+   
+
 }
+
+
+
 
 .form-input{
 
@@ -52,3 +46,15 @@
     box-shadow: none;
     border:none;
 }
+#heart-icon {
+    color: #3a3a3a;
+  }
+  
+  #heart-icon:hover {
+    color: red;
+    
+  }
+  
+  #heart-icon.clicked {
+    color: red;
+  }

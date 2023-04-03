@@ -1,8 +1,27 @@
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/"> <img src="../../../assets/METEO.png" width="60" height="60" alt=""> </a>
-  <a type="button" class="btn btn-sm btn-outline-secondary" (click)="logout()">Logout</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+  <a class="navbar-brand " href="/" style="margin-left: 30px;"> <img src="../../../assets/METEO.png" width="60" height="60" alt=""> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto ">
+      <li class="nav-item active " >
+        <a class="nav-link " style="color: #1C2331;"href="#">WEATHER APP</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: #1C2331;"href="#">Contact Us</a>
+      </li>
+    
+     
+    </ul>
+   
+  </div>
+  <form class="form-inline my-2 my-lg-0 " style="margin-right: 30px;">
+    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
+  </form>
 </nav>
-<section class="vh-100" style="background: url(https://img.freepik.com/free-photo/cloudy-stormy-black-white-dramatic-sky_146671-19382.jpg?w=1060&t=st=1679305526~exp=1679306126~hmac=402e6fa079818f1ccd944bbebc159d63f49fe83098d32b46876a667946f2149c);background-size: cover;">
+<section class="vh-100" style="background: url(https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/weather/sky/wispy-clouds-in-a-blue-sky.jpg);background-size: cover;">
   <div class="container">
     <div class="row height d-flex justify-content-center align-items-center">
       <div class="d-flex">
@@ -13,15 +32,15 @@
             <i class="fa fa-search"></i>
             <form (ngSubmit)="onSubmit()">
               <input type="text" class="form-control form-input" placeholder="Search anything..." [(ngModel)]="cityName" name="the city name">
-              <span class="left-pan"><button><i class="bi bi-search"></i></button></span>
+              <span class="left-pan"><button class="btn btn-primary shadow-none" ><i class=" bi bi-search"></i></button></span>
             </form>
           </div>
         </div>
-        <div class="container d-inline-block">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-6 col-lg-6 col-xl-6">
+        <div class="container d-inline-block ">
+          <div class="row d-flex justify-content-center align-items-center h-100 justify-content-end" >
+            <div class="col-md-6 col-lg-6 col-xl-6 ">
       
-              <div class="card" style="color: #4B515D; border-radius: 35px;">
+              <div class="card shadow" style="color: #4B515D; border-radius: 35px;">
                 <div class="card-body p-4">
       
                   <div class="d-flex">
@@ -48,8 +67,8 @@
                         width="100px">
                     </div>
                   </div>
-      
-                  <button type="button" class="btn btn-primary" (click)="AjoutFavorie()">Ajout au Favories <span class="bi bi-heart"></span></button>
+                  <button type="button" class="btn " (click)="AjoutFavorie()"> <span class="bi bi-heart" id="heart-icon"></span></button>
+
     
                 </div>
               </div>
@@ -66,11 +85,12 @@
     
   </div>
 </section>
-<section class="vh-100 " style="background: url(https://img.freepik.com/free-photo/cloudy-stormy-black-white-dramatic-sky_146671-19382.jpg?w=1060&t=st=1679305526~exp=1679306126~hmac=402e6fa079818f1ccd944bbebc159d63f49fe83098d32b46876a667946f2149c);background-size: cover;">
-  <div class=" container row  align-items-center justify-content-center">
-    <div class="col-md-4 col-lg-4 col-xl-4 my-auto">
+<section class="vh-100 " style="display: flex; justify-content: center; align-items: center ;background: url(https://t3.ftcdn.net/jpg/05/12/51/42/360_F_512514218_0I0x8sSpvCdX2PKfLSIWSHV3g3WcojFk.jpg);background-size: cover;">
+  <div class="container align-items-center">
+  <div class="  row align-items-center">
+    <div class="col-md-4 col-lg-4 col-xl-4  ">
       
-      <div class="card" style="color: #4B515D; border-radius: 35px;">
+      <div class="card shadow "data-aos="fade-right" style="color: #4B515D; border-radius: 35px;">
         <div class="card-body p-4">
 
           <div class="d-flex">
@@ -98,14 +118,13 @@
             </div>
           </div>
 
-          <button type="button" class="btn btn-primary" (click)="AjoutFavorie()">Ajout au Favories <span class="bi bi-heart"></span></button>
 
         </div>
       </div>
     </div> 
     <div class="col-md-4 col-lg-4 col-xl-4 my-auto">
       
-      <div class="card" style="color: #4B515D; border-radius: 35px;">
+      <div class="card shadow" style="color: #4B515D; border-radius: 35px;">
         <div class="card-body p-4">
 
           <div class="d-flex">
@@ -133,14 +152,13 @@
             </div>
           </div>
 
-          <button type="button" class="btn btn-primary" (click)="AjoutFavorie()">Ajout au Favories <span class="bi bi-heart"></span></button>
 
         </div>
       </div>
     </div> 
     <div class="col-md-4 col-lg-4 col-xl-4 my-auto">
       
-      <div class="card" style="color: #4B515D; border-radius: 35px;">
+      <div class="card shadow" style="color: #4B515D; border-radius: 35px;">
         <div class="card-body p-4">
 
           <div class="d-flex">
@@ -168,10 +186,15 @@
             </div>
           </div>
 
-          <button type="button" class="btn btn-primary" (click)="AjoutFavorie()">Ajout au Favories <span class="bi bi-heart"></span></button>
 
         </div>
       </div>
     </div> 
   </div>
+</div>
   </section>
+<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-light text-dark-50">
+  <div class="container text-center">
+    <small>Copyright &copy; WEATHER APP</small>
+  </div>
+</footer>

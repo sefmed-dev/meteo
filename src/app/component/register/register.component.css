@@ -1,0 +1,13 @@
+.card {
+    flex-direction: row;
+  }
+  .dynamic-image {
+    width: 50%;
+    height: auto;
+  }
+
+  @media screen and (max-width: 768px) {
+    .dynamic-image {
+      display: none;
+    }
+  }
